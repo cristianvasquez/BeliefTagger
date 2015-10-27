@@ -1,0 +1,10 @@
+{
+  "name": "belief-tagger-prototype",
+  "version": "0.0.0",
+  "description": "Collaborative mapping made easy.",
+  "author": "Cristian Vasquez",
+  "dependencies": {
+    "angular": "~1.4.0",
+    "angular-route": "~1.4.0"
+  }
+}
