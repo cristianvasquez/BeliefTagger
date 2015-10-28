@@ -5,7 +5,7 @@ angular.module('app.detail', ['ngRoute'])
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.
       when('/detail/:detailId', {
-        templateUrl: './detail/image-card.html',
+        templateUrl: './detail/detail.html',
         controller: 'DetailCtrl'
   });
 }])
@@ -15,8 +15,6 @@ angular.module('app.detail', ['ngRoute'])
         $http.get("api/nodes/"+$routeParams.detailId).success(function (marker) {
             $scope.current=marker;
         });
-
-
 
         var testImages = [
             'img/food/bread/pain.JPG',
@@ -69,9 +67,6 @@ angular.module('app.detail', ['ngRoute'])
         ];
 
         $scope.currentImageUrl = testImages[Math.floor(Math.random() * testImages.length)];
-
-
-
 
     }])
 .filter('prettyJSON', function () {

@@ -1,1 +1,27 @@
-{{current | prettyJSON }}
+<md-content class="md-padding">
+
+    <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+        <div class="md-actions" layout="row" layout-align="end center">
+            <md-button href="#/detail"><-</md-button>
+            <md-button href="#/detail">-></md-button>
+        </div>
+    </section>
+
+    <md-card>
+        <md-card-content>
+            <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+            <h2 class="md-title">Image title</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" aria-label="Favorite">
+                <md-icon
+                        md-svg-icon="img/icons/favorite.svg"
+                        style="color: greenyellow;">
+                </md-icon>
+            </md-button>
+                </section>
+            <p>Image description</p>
+        </md-card-content>
+        <img ng-src="{{currentImageUrl}}" class="md-card-image" alt="Alternative text">
+    </md-card>
+
+</md-content>
