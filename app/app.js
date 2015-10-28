@@ -7,5 +7,5 @@ angular.module('app', [
                 'ngMaterial'
 ]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/master'});
+  $routeProvider.otherwise({redirectTo: '/detail/2'});
 }]);
