@@ -9,39 +9,31 @@
 
         <md-content layout-padding>
 
-
-
             <md-grid-list
-                    md-cols-gt-md="12" md-cols-sm="3" md-cols-md="8"
+                    md-cols-sm="1" md-cols-md="2" md-cols-gt-md="6"
                     md-row-height-gt-md="1:1" md-row-height="4:3"
-                    md-gutter-gt-md="16px" md-gutter-gt-sm="8px" md-gutter="4px">
-                <md-card ng-repeat="card in appCtrl.cards">
-                    <md-card-content>
-                        <img src="{{card.imageURL}}"
-                             class="md-card-image"
-                             alt="image caption"
-                                ŝ>
-                    </md-card-content>
-                    <md-card-footer>
-                        Card footer
-                    </md-card-footer>
-                </md-card>
+                    md-gutter="8px" md-gutter-gt-sm="4px" >
+
+                    <md-grid-tile ng-repeat="card in appCtrl.cards"
+                                  md-rowspan="2"
+                                  md-colspan="2"
+                                  >
+
+                                        <md-card >
+                                            <md-card-content >
+                                                <img src="{{card.imageURL}}"
+                                                     alt="image caption"
+                                                     class="cardImage">
+                                            </md-card-content>
+                                            <md-card-footer class="cardFooter">
+                                                {{card.imageURL}}
+                                            </md-card-footer>
+                                        </md-card>
+                        </div>
+                    </md-grid-tile>
 
             </md-grid-list>
-
         </md-content>
-
-    </div>
-
-    <div class="bottom-sheet-demo inset" layout="row" layout-sm="column" layout-align="center" >
-        <md-button flex="50" class="md-primary md-raised" ng-click="showListBottomSheet($event)">Export</md-button>
-    </div>
-
-    <div ng-if="alert">
-        <br/>
-        <b layout="row" layout-align="center center" class="md-padding">
-            {{alert}}
-        </b>
     </div>
 
 </div>
