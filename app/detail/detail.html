@@ -10,7 +10,7 @@
     <md-card>
         <md-card-content>
             <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-            <h2 class="md-title">Image title</h2>
+            <h2 class="md-title">{{current['@type']}}</h2>
             <span flex></span>
             <md-button class="md-icon-button" aria-label="Favorite">
                 <md-icon
@@ -19,9 +19,12 @@
                 </md-icon>
             </md-button>
                 </section>
-            <p>Image description</p>
+            <p>{{current['rel:title']}}</p>
         </md-card-content>
-        <img ng-src="{{currentImageUrl}}" class="md-card-image" alt="Alternative text">
+        <img check-image
+             ng-src="{{current['foaf:depiction'] || 'default_user.jpg'}}"
+             alt="{{current['rel:title']}}"
+             class="cardImage">
     </md-card>
 
 </md-content>

@@ -1,0 +1,4 @@
+@prefix oc: <http://openthings.cc/class/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+[] a oc:Index ; oc:Dataset <https://raw.githubusercontent.com/cristianvasquez/BeliefTaggerData/master/index/index.ttl> ; dc:title "The only known index" .

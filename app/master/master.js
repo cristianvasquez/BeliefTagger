@@ -61,89 +61,25 @@ angular.module('app.master', ['ngMaterial','ngRoute'])
     })
     .controller('MasterCtrl', function ($scope, $http) {
 
-        $http.get("api/nodes").success(
-            function (data) {
-                console.log(data);
-            }
-        );
     })
 
-    .controller('mainListCtrl', function($scope) {
-
-        var testImages = [
-            'img/food/bread/pain.JPG',
-            'img/food/bread/pain-2.JPG',
-            'img/food/bread/pain-3.JPG',
-            'img/food/bread/pain-4.JPG',
-            'img/food/bread/pain-5.JPG',
-            'img/food/bread/pain-6.JPG',
-            'img/food/bread/pain-7.JPG',
-            'img/food/bread/pain-8.JPG',
-            'img/food/bread/pain-9.JPG',
-            'img/food/bread/pain-10.JPG',
-            'img/food/bread/pain-11.JPG',
-            'img/food/bread/pain-12.JPG',
-            'img/food/bread/pain-13.JPG',
-            'img/food/bread/pain-14.JPG',
-            'img/food/bread/pain-15.JPG',
-            'img/food/bread/pain-16.JPG',
-            'img/food/bread/pain-17.JPG',
-            'img/food/bread/pain-18.JPG',
-            'img/food/bread/pain-19.JPG',
-            'img/food/bread/pain-20.JPG',
-            'img/food/bread/pain-21.JPG',
-            'img/food/bread/pain-22.JPG',
-            'img/food/bread/pain-23.JPG',
-            'img/food/bread/pain-24.JPG',
-            'img/food/bread/pain-25.JPG',
-            'img/food/bread/pain-26.JPG',
-            'img/food/icecream/4.JPG',
-            'img/food/icecream/8.JPG',
-            'img/food/icecream/14.JPG',
-            'img/food/icecream/22.JPG',
-            'img/food/icecream/cremeux-pecan.JPG',
-            'img/food/meat/5.JPG',
-            'img/food/meat/6.JPG',
-            'img/food/meat/8.JPG',
-            'img/food/meat/9.JPG',
-            'img/food/meat/15.JPG',
-            'img/food/meat/17.JPG',
-            'img/food/meat/37.JPG',
-            'img/food/meat/45.JPG',
-            'img/food/meat/50.JPG',
-            'img/food/milk/joost K-16.JPG',
-            'img/food/milk/joost K-19.JPG',
-            'img/food/milk/joost K-26.JPG',
-            'img/food/milk/joost K-28.JPG',
-            'img/food/milk/joost K-36.JPG',
-            'img/food/milk/joost K-38.JPG',
-            'img/food/milk/lait.JPG'
-        ];
-
+    .controller('appSearchCtrl', function($scope, $http) {
         this.cards = (function() {
             var tiles = [];
-            for (var i = 0; i < 46; i++) {
-                tiles.push({
-                    imageURL: randomImage(),
-                    colspan: randomSpan(),
-                    rowspan: randomSpan()
-                });
-            }
+            $http.get("api/nodes").success(
+                function (data) {
+                    data['@graph'].filter(function (current) {
+                        // Here all the stuff to discern what is the image to show etc.
+                        tiles.push({
+                            id: current["@id"],
+                            imageURL: current["foaf:depiction"],
+                            title: current["rel:title"],
+                        });
+                    });
+                }
+            );
             return tiles;
         })();
-        function randomImage() {
-            return testImages[Math.floor(Math.random() * testImages.length)];
-        }
-        function randomSpan() {
-            var r = Math.random();
-            if (r < 0.8) {
-                return 1;
-            } else if (r < 0.9) {
-                return 2;
-            } else {
-                return 3;
-            }
-        }
     })
 
     .run(function($http, $templateCache) {

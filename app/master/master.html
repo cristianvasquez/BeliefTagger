@@ -5,32 +5,31 @@
     <p>Here I can export, save, share etc.</p>
     <p>Also I have all the tagging possibilities..</p>
 
-    <div ng-controller="mainListCtrl as appCtrl" flex ng-cloak>
-
+    <div ng-controller="appSearchCtrl as ctrl" flex ng-cloak>
         <md-content layout-padding>
-
             <md-grid-list
                     md-cols-sm="1" md-cols-md="2" md-cols-gt-md="6"
                     md-row-height-gt-md="1:1" md-row-height="4:3"
-                    md-gutter="8px" md-gutter-gt-sm="4px" >
+                    md-gutter="8px" md-gutter-gt-sm="4px">
+                <md-grid-tile ng-repeat="current in ctrl.cards"
+                              md-rowspan="2"
+                              md-colspan="2">
+                    <!--<a href="#/detail/{{current.id}}">-->
+                        <a href="#/detail/123">
 
-                    <md-grid-tile ng-repeat="card in appCtrl.cards"
-                                  md-rowspan="2"
-                                  md-colspan="2"
-                                  >
-
-                                        <md-card >
-                                            <md-card-content >
-                                                <img src="{{card.imageURL}}"
-                                                     alt="image caption"
-                                                     class="cardImage">
-                                            </md-card-content>
-                                            <md-card-footer class="cardFooter">
-                                                {{card.imageURL}}
-                                            </md-card-footer>
-                                        </md-card>
-                        </div>
-                    </md-grid-tile>
+                        <md-card>
+                        <md-card-content>
+                            <img check-image
+                                 ng-src="{{current.imageURL || 'default_user.jpg'}}"
+                                 alt="{{current.title}}"
+                                 class="cardImage">
+                        </md-card-content>
+                        <md-card-footer class="cardFooter">
+                            {{current.title}}
+                        </md-card-footer>
+                    </md-card>
+                    </a>
+                </md-grid-tile>
 
             </md-grid-list>
         </md-content>
